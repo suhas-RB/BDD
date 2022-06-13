@@ -1,25 +1,41 @@
-from pytest_bdd import scenario,given,when,then
+from pytest_bdd import scenario, given, when, then, parsers
 
-@scenario("./../features/login2.feature","valid login")
-def test_login():
+
+@scenario("./../features/login2.feature", "valid login")
+def test_validlogin():
     pass
 
+
+@scenario("./../features/login2.feature", "invalid login")
+def test_invalidlogin():
+    pass
+
+
 @given("login page is displayed")
-def enter_un():
-    print("Enter admin in username")
+def login_page():
+    print("login page is displayed")
 
-@when("enter admin in username")
-def enter_pwd():
-    print("Enter admin in username")
 
-@when("enter manager in password")
-def enter_pwd():
-    print("Enter manager in password")
+@when(parsers.parse("enter {un} in username"))
+def enter_un(un):
+    print("Enter {} in username".format(un))
+
+
+@when(parsers.parse("enter {pw} in password"))
+def enter_pwd(pw):
+    print("Enter {} in password".format(pw))
+
 
 @when("click login")
 def click_login():
     print("click login button")
 
+
 @then("home page should be displayed")
 def homepage():
     print("home page is displayed")
+
+
+@then("err msg should be displayed")
+def err_msg():
+    print("Error message is displayed")
