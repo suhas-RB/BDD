@@ -1,12 +1,16 @@
+import pytest_bdd
 from pytest_bdd import scenario, given, when, then, parsers
+from functools import partial
+
+scenario=partial(pytest_bdd.scenario,"forgotpwd.feature")
 
 
-@scenario("./../features/forgotpwd.feature", "valid pwd recovery")
+@scenario("valid pwd recovery")
 def test_valid_pwd_recovery():
     pass
 
 
-@scenario("./../features/forgotpwd.feature", "invalid pwd recovery")
+@scenario("invalid pwd recovery")
 def test_invalid_pwd_recovery():
     pass
 
